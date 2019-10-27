@@ -8,13 +8,11 @@ class TopicController {
   }
 
   async store(req, res) {
-    const { name, classification } = req.body();
+    const { name, classification } = req.body;
 
     const topic = await Topic.create({ name, classification });
 
-    return res.json({
-      topic,
-    });
+    return res.json(topic);
   }
 }
 
