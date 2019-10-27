@@ -15,10 +15,6 @@ class Content extends Model {
 
     return this;
   }
-
-  static associate(models) {
-    this.belongsTo(models.Topic, { foreignKey: 'topic_id' });
-  }
 }
 
 export default Content;
