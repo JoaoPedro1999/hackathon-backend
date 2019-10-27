@@ -6,13 +6,14 @@ import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 
 import authMiddleware from './app/middlewares/auth';
-import FileController from './app/controllers/FileController';
-import MeetupController from './app/controllers/MeetupController';
-import OrganizingController from './app/controllers/OrganizingController';
-import SubscriptionController from './app/controllers/SubscriptionController';
 
-import validateMeetupStore from './app/validators/MeetupStore';
-import validateMeetupUpdate from './app/validators/MeetupUpdate';
+import ContentController from './app/controllers/ContentController';
+import CuriosityController from './app/controllers/CuriosityController';
+import InterestContoller from './app/controllers/InterestContoller';
+import PermissionController from './app/controllers/PermissionController';
+import SurveyController from './app/controllers/SurveyController';
+import TopicController from './app/controllers/TopicController';
+import FileController from './app/controllers/FileController';
 
 import validateUserStore from './app/validators/UserStore';
 import validateUserUpdate from './app/validators/UserUpdate';
@@ -32,15 +33,24 @@ routes.post('/files', upload.single('file'), FileController.store);
 
 routes.put('/users', validateUserUpdate, UserController.update);
 
-routes.get('/meetups', MeetupController.index);
-routes.post('/meetups', validateMeetupStore, MeetupController.store);
-routes.put('/meetups/:id', validateMeetupUpdate, MeetupController.update);
-routes.delete('/meetups/:id', MeetupController.delete);
+routes.get('/content', ContentController.index);
+routes.post('/content', ContentController.store);
 
-routes.get('/organizing', OrganizingController.index);
-routes.get('/subscriptions', SubscriptionController.index);
+routes.get('/curiosity', CuriosityController.index);
+routes.post('/curiosity', CuriosityController.store);
 
-routes.post('/meetups/:meetupId/subscriptions/', SubscriptionController.store);
-routes.delete('subscriptions/:subscriptionsId', SubscriptionController.delete);
+routes.get('/interest', InterestContoller.index);
+routes.post('/interest', InterestContoller.store);
+
+routes.get('/permission', PermissionController.index);
+routes.post('/permission', PermissionController.store);
+
+routes.get('/survey', SurveyController.index);
+routes.post('/survey', SurveyController.store);
+
+routes.get('/topic', TopicController.index);
+routes.post('/topic', TopicController.store);
+
+routes.post('/topic/:topicId/interest/', InterestContoller.store);
 
 export default routes;
