@@ -43,6 +43,7 @@ routes.post('/survey', SurveyController.store);
 
 routes.get('/topic', TopicController.index);
 routes.post('/topic', TopicController.store);
+routes.put('/topic/:id', TopicController.update);
 
 routes.post('/topic/:topicId/interest/', InterestContoller.store);
 
