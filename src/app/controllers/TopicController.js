@@ -14,6 +14,16 @@ class TopicController {
 
     return res.json(topic);
   }
+
+  async update(req, res) {
+    const { id } = req.params;
+
+    const topic = Topic.findByPk(id);
+
+    await topic.update(req.body);
+
+    return res.json(topic);
+  }
 }
 
 export default new TopicController();
