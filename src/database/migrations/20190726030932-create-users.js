@@ -24,11 +24,8 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      permission_id: {
-        type: Sequelize.INTEGER,
-        references: { model: 'permissions', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+      admin: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
       created_at: {
