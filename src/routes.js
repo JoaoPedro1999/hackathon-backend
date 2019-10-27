@@ -13,7 +13,6 @@ import InterestContoller from './app/controllers/InterestContoller';
 import PermissionController from './app/controllers/PermissionController';
 import SurveyController from './app/controllers/SurveyController';
 import TopicController from './app/controllers/TopicController';
-import FileController from './app/controllers/FileController';
 
 import validateUserStore from './app/validators/UserStore';
 import validateUserUpdate from './app/validators/UserUpdate';
@@ -22,14 +21,10 @@ import validateSessionStore from './app/validators/SessionStore';
 
 const routes = new Router();
 
-const upload = multer(multerConfig);
-
 routes.post('/users', validateUserStore, UserController.store);
 routes.post('/sessions', validateSessionStore, SessionController.store);
 
 routes.use(authMiddleware);
-
-routes.post('/files', upload.single('file'), FileController.store);
 
 routes.put('/users', validateUserUpdate, UserController.update);
 
